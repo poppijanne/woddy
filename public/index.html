@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fi">
+
+<head>
+    <title>Treenirobotti</title>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Treeniohjelmat helposti ja nopeasti" />
+    <link rel="icon" type="image/png" href="favicon.png">
+    </link>
+    <link rel="apple-touch-startup-image" href="startup.png">
+    </link>
+    <link rel="apple-touch-icon" href="apple_icon_152x152.png">
+    </link>
+    <link rel="apple-touch-icon" sizes="57x57" href="apple_icon_57x57.png">
+    </link>
+    <link rel="apple-touch-icon" sizes="72x72" href="apple_icon_72x72.png">
+    </link>
+    <link rel="apple-touch-icon" sizes="76x76" href="apple_icon_76x76.png">
+    </link>
+    <link rel="apple-touch-icon" sizes="114x114" href="apple_icon_114x114.png">
+    </link>
+    <link rel="apple-touch-icon" sizes="120x120" href="apple_icon_120x120.png">
+    </link>
+    <link rel="apple-touch-icon" sizes="152x152" href="apple_icon_152x152.png">
+    </link>
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <!--
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600&display=swap" rel="stylesheet">
+    -->
+    <script>
+        window.onresize = function () {
+            //document.body.height = window.innerHeight;
+            //document.body.width = window.innerWidth;
+            /*
+            const nav = document.getElementById("navigation");
+            const footer = document.getElementById("footer");
+            const main = document.getElementById("main");
+            if (nav && footer && main) {
+                main.style.paddingTop = nav.offsetHeight + "px";
+                main.style.paddingBottom = footer.offsetHeight + "px";
+                const layouts = document.getElementsByClassName("layout");
+                Array.prototype.forEach.call(layouts, element => {
+                    element.style.height = Math.floor(window.innerHeight - (nav.scrollHeight + footer.scrollHeight)) + "px";
+                })
+            }*/
+            /*window.scrollTo(0, 0);*/
+            //document.body.style.fontSize = Math.min(1.7, ((window.innerWidth + window.innerHeight) / (550 * 2))) + "em"
+        }
+    </script>
+</head>
+
+<body class="theme-default">
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <script>
+        window.onresize();
+    </script>
+</body>
+
+</html>

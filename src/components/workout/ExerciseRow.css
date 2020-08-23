@@ -1,0 +1,47 @@
+/*
+.cirquit-table tr:hover {
+    background-color: var(--light);
+}
+*/
+.cirquit-table tr.selected {
+    /*
+    background-color: var(--orange);
+    */
+    color: #FFF;
+}
+/*
+.cirquit-table tr.selected:hover {
+    background-color: var(--orange);
+    color: #FFF;
+}
+*/
+/*
+.cirquit-table input {
+    width: 100%;
+    border-radius: 0.2em;
+    padding: 0.0em;
+    padding-left: 0.3em;
+    padding-right: 0.3em;
+    background-color: transparent;
+    border: 0.1em solid #fff;
+    box-shadow: none;
+    color: #FFF;
+}
+*/
+/*
+.exercise-name-column {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-shadow: 0px 1px 2px #ffffffa6;
+    border: 1px solid #0000002e;
+    padding: 0.4em;
+    border-radius: 0.3em;
+    box-shadow: inset 0px 0px 2px #0000008f, inset 0px 2px 4px #00000038, inset 0px 4px 1px #0000000d, 0px 1px 1px #ffffff63;
+}*/
+
+.selected .exercise-name-column {
+    color: #FFF;
+    text-shadow: 0px 0px 4px #ffffff26;
+}

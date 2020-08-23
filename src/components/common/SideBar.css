@@ -1,0 +1,113 @@
+.side-nav {
+    --navigator-width: 5em;
+    --navigator-close-gutter-width: 50px;
+    position: fixed;
+    padding: 0;
+    right: 0;
+    top: 1.5vh;
+    width: 100vw;
+    height: 95vh;
+
+    /*height: calc(100vh - var(--footer-height));*/
+    z-index: 1000;
+    overflow: hidden;
+    /*padding-top: 4em; */
+    background-color: #ffffff;
+    /*
+    border-left: var(--border-header);
+    
+    border-top-left-radius: 0.6em;
+    border-bottom-left-radius: 0.6em;
+    
+    box-shadow: -0.1em 0.2em 0.4em #00000047, 0px 0px 2px #00000078, 0px 1em 0.2em #00000078;
+    */
+    border-top-left-radius: var(--border-radius-l);
+    border-bottom-left-radius: var(--border-radius-l);
+    border-left: var(--border-header);
+    border: 0.1rem solid var(--border-color-dark);
+    box-shadow: var(--shadow-l);
+    background-clip: padding-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    transform: translateX(calc(100vw - var(--navigator-width) - var(--navigator-close-gutter-width)));
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+.side-nav.hidden {
+    transform: translateX(100vw);
+    opacity: 0;
+}
+
+.side-nav-close {
+    font-size: 1.1em;
+    height: 100%;
+    border-right: 1px solid #ccc;
+    border-left: 1px solid #ccc; 
+    text-align: center;
+    width: var(--navigator-close-gutter-width);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.side-nav.sub-menu {
+    transform: translateX(0);
+}
+
+.side-nav-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around; 
+    border-right: 1px solid #ccc; 
+    height: 100%;  
+    width: var(--navigator-width);
+}
+
+.side-nav button.side-nav-button {
+    flex-grow: 1;
+    width: var(--navigator-width);
+    border: none;
+    border-top: 1px solid #ccc;
+    border-radius: 0;
+    margin: 0;
+    background: none;
+}
+
+.side-nav button:first-of-type {
+    border-top: none;
+}
+
+.side-nav button {
+    color: #333;
+    background: none;
+}
+
+.side-nav button.selected {
+    position: relative;
+    background-color: var(--orange);
+    color: #FFF;
+}
+
+.side-nav button.sub-menus.selected:after {
+    content: "";
+    overflow: hidden;
+    display: inline-block;
+    position: absolute;
+    top: calc(50% - 7px);
+    width: 15px;
+    height: 15px;
+    border-top: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    background-color: var(--orange);
+    color: #FFF;
+    right: -8px;
+    transform: rotateZ(45deg);
+}
+
+.side-nav-content {
+    height: 100%;
+    border-left: 1px solid #ccc;
+    flex-grow: 1;
+}

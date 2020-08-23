@@ -1,0 +1,335 @@
+.timer-layout {
+    /*padding: 5px;*/
+    display: grid;
+    height: 100%;
+    box-sizing: border-box;
+    /*transition: grid-template-rows 1s;*/
+    /*
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    */
+}
+
+@media (orientation: portrait) {
+    .timer-layout {
+        grid-template-columns: 100%;
+        grid-template-rows: 25% 35% 40%;
+        grid-template-areas: "exercise-titles" "timer" "workout-info";
+    }
+
+    .timer-layout.rest {
+        grid-template-columns: 45% 55%;
+        grid-template-rows: 0% 20% 20% 60%;
+        grid-template-areas: "exercise-titles exercise-titles" "cirquit-info timer" "round-info timer" "workout-info workout-info";
+    }
+}
+
+@media (orientation: landscape) {
+    .timer-layout {
+        grid-template-columns: 40% 60%;
+        grid-template-rows: 30% 70%;
+        grid-template-areas: "exercise-titles exercise-titles" "timer workout-info"
+    }
+/*
+    .timer-layout.rest {
+        grid-template-columns: 40% 60%;
+        grid-template-rows: 0% 20% 20% 60%;
+        grid-template-areas: "exercise-titles exercise-titles" "cirquit-info workout-info" "round-info workout-info" "timer workout-info"
+    }
+    */
+    .timer-layout.rest {
+        grid-template-columns: 20% 20% 60%;
+        grid-template-rows: 0% 40% 60%;
+        grid-template-areas: 
+            "exercise-titles exercise-titles exercise-titles" 
+            "cirquit-info round-info workout-info" 
+            "timer timer workout-info"
+    }
+}
+
+.timer-layout-grid-cell {
+    /*
+    border: 0.075em solid var(--border-color);
+    */
+    background-color: var(--bg-color-2);
+    margin: 0.4em;
+    border-radius: var(--border-radius-3);
+}
+
+.timer-layout .exercise-titles {
+    grid-area: exercise-titles;
+    display: grid;
+    box-sizing: border-box;
+    grid-template-columns: 100%;
+    grid-template-rows: auto;
+    grid-template-areas: "exercise-title";
+    /*transition: transform 1s, font-size 0.5s;*/
+    
+}
+/*
+.timer-layout.go .exercise-titles {
+    height:100%;
+}
+*/
+.timer-layout.rest .exercise-titles {
+    /*font-size: 0.1em;*/
+    /*height:0px;
+    overflow: hidden;*/
+    transform: translateY(-50vh);
+}
+
+.timer-cirquit-info {
+    grid-area: workout-info;
+    display: flex;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    flex-direction: column;
+    justify-content: center;
+    /*padding-top: 0.4em;*/
+    /*
+    border-left: 0.15em solid var(--border-color);
+    border-right: 0.15em solid var(--border-color);
+    */
+    transition: transform 1s, opacity 1s, height 1.0s;
+    overflow-y: auto;
+    webkit-overflow-scrolling: touch;
+}
+/*
+@media (orientation: portrait) {
+    .timer-cirquit-info {
+        border-top: 0.15em solid var(--border-color);
+    }
+}
+*/
+.timer-layout.rest .timer-cirquit-info {
+    opacity: 1;
+    /*z-index: 1;*/
+    /*height: 100%;*/
+    padding-top: 0.3em;
+}
+
+.timer-layout.go .timer-cirquit-info {
+    opacity: 0;
+    /*z-index: 0;*/
+}
+
+.timer-cirquit-info h2{
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.workout-info {
+    grid-area: workout-info;
+}
+
+.timer-layout.go .workout-info {
+    display: grid;
+    height: 100%;
+    box-sizing: border-box;
+    opacity: 1;
+    z-index: 1;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto;
+    grid-template-areas: "round-info cirquit-info" "exercise-info remaining-workout-time";
+    transition: transform 0.8s, opacity 0.8s;
+}
+
+.timer-layout.rest .workout-info {
+    transform: translateX(100vw);
+    opacity: 0;
+    z-index: 0;
+}
+
+.timer-layout section {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    /*justify-content: space-around;*/
+}
+
+/*
+.timer-layout section h4 {
+    font-size: 1.5em;
+    color: var(--focus-color-1);
+    padding: 0px;
+    margin: 0px;
+}*/
+
+.timer-layout section h4 {
+    /*line-height: 0.25em;*/
+}
+
+.timer-layout section h3 {
+    font-size: 4em;
+    padding: 0px;
+    margin: 0px;
+    line-height: 0.5em;
+    /*
+    text-shadow: 0px 3px 0.1em #0008;*/
+}
+
+.timer-layout section h2 {
+    color: #FFF;
+}
+
+.timer-layout section h1 {
+    font-size: 2.8em;
+    padding: 0px;
+    margin: 0px;
+    /*transition: font-size 0.2s;*/
+}
+
+@media (orientation: portrait) {
+    .timer-layout section h1 {
+        font-size: 2.5em;
+        padding: 0px;
+        margin: 0px;
+    }
+}
+
+.timer-layout section h1.big {
+    font-size: 6.2em;
+}
+
+.timer-layout section h1.bigger {
+    font-size: 8.2em;
+}
+
+.timer-layout .rest-cirquit-info {
+    grid-area: cirquit-info;
+    display: flex;
+    flex-direction: column;
+    /*flex-flow: wrap;
+    justify-content: space-around;
+    */
+    align-items: center;
+}
+
+.timer-layout .rest-round-info {
+    grid-area: round-info;
+    display: flex;
+    flex-direction: column;
+    /*
+    flex-flow: wrap;
+    justify-content: space-around;
+    */
+    align-items: center;
+}
+
+.timer-layout .workout-info .cirquit-info {
+    grid-area: cirquit-info;
+}
+
+.timer-layout .workout-info .round-info {
+    grid-area: round-info;
+}
+
+.timer-layout .workout-info .exercise-info {
+    grid-area: exercise-info;
+}
+
+.timer-layout .workout-info .remaining-workout-time {
+    grid-area: remaining-workout-time;
+}
+
+.timer-layout .workout-info .round-info {
+    grid-area: round-info;
+}
+
+.timer-layout .workout-info .equipment-info {
+    grid-area: equipment-info;
+}
+
+.timer-layout .exercise-title {
+    grid-area: exercise-title;
+    /*
+    text-shadow: 0px 3px 0.3em #000;
+    */
+    transform: translateX(0px);
+    transition: transform 1s;
+    font-size: 1.2em;
+    justify-content: center;
+}
+
+@media (orientation: landscape) {
+    .timer-layout .exercise-title {
+        padding-bottom: 0.5em;
+    }
+}
+
+.timer-layout .exercise-title.previous {
+    transform: translateX(-100vw);
+}
+
+.timer-layout .exercise-title.next {
+    transform: translateX(100vw);
+}
+
+.exercise-title.current.upcoming {
+    transform: translateX(-1.0em);
+}
+
+.timer-layout .timer {
+    grid-area: timer;
+    /*overflow: hidden;*/
+    /*
+    text-shadow: 0px 3px 0.3em #000;
+    */
+}
+
+.timer-layout .next-exercise-alert-icon {
+    position: absolute;
+    right: 0em;
+    opacity: 1.0;
+    animation: blink-animation 1s steps(2, start) infinite;
+    -webkit-animation: blink-animation 1s steps(2, start) infinite;
+}
+
+.timer-layout .rest {
+    color: #f00;
+}
+
+.timer-layout h2 {
+    color: #fff;
+}
+
+.timer-view-edit-cirquit-button {
+    position: fixed;
+    right: 0em;
+    top: calc(100vh / 2 - 2em);
+    font-size: 1.1em;
+    padding-right: 0.1em;
+    padding-left: 0.4em;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    border-right: none;
+    background-color: var(--background-color-button);
+    box-shadow: var(--shadow-m); 
+}
+
+/*
+#timer-cirquit-info-cirquit.cirquit-editor {
+    background-color: #fff;
+    border: 0.1em solid var(--border-color);
+    border-top: none;
+}*/
+
+.timer-view-add-cirquit-button {
+
+}
+
+@keyframes blink-animation {
+    to {
+        visibility: hidden;
+    }
+}
+
+@-webkit-keyframes blink-animation {
+    to {
+        visibility: hidden;
+    }
+}
+

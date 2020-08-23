@@ -1,0 +1,158 @@
+section.cirquit {
+    width: fit-content;
+    min-width: 100%;
+    border: 0.1rem solid var(--border-color-darker);
+    background-color: var(--background-color-content);
+    color: var(--font-color-primary);
+    border-radius: var(--border-radius-l);
+    /*
+    box-shadow: var(--shadow-s);
+    */
+    /*
+    padding: 0.4em;
+    padding-bottom: 0.5em;
+    */
+    box-shadow: 0px 2px 1px #000000a7;
+    box-shadow: var(--shadow-m);
+    /*
+    background: linear-gradient( #ffffffff 51%, #ffffffff 75%, #d0d0d020);
+    */
+    /*margin-bottom: 2em;*/
+}
+
+section.cirquit.timer-mode {
+    border: 0;
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.cirquit-table {
+    font-size: 1em;
+    font-weight: 500;
+    /*
+    box-shadow: 0px 0.1em 0.25em #00000052, 1px 0.4em 9px 1px #48484826, 0px 0px 1px 2px #00000047, 0px 1.1em 1px #0000000a;
+    */
+    /*
+    transition: box-shadow 0.2s;
+    /*
+    background: linear-gradient(#ffffffff 0%, #ffffffff 80%, #f0f0f0ff);
+    */
+}
+
+/*
+.cirquit-table:hover {
+    box-shadow: 0px 0.1em 0.3em #0000004d, 1px 4px 12px 1px #48484836, 0px 0px 1px #000000ac;
+}
+
+.cirquit-table.selected {
+    box-shadow: 0px 0px 1px 2px var(--orange), 0px 0px 10px 0px var(--orange);
+}
+*/
+
+.cirquit-table.timer {
+    margin-bottom: 0em;
+}
+
+/*
+.cirquit-table th.cirquit-top {
+    border-bottom: none !important;
+}
+*/
+
+.cirquit-table tr.cirquit-summary {
+    color: #888;
+}
+
+.cirquit-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5em;
+    /*
+    padding-left: 0.2em;
+    padding-right: 0.2em;
+    */
+}
+
+.cirquit-label {
+    font-weight: 600;
+    font-size: 1.4em;
+    vertical-align: middle !important;
+}
+
+/*
+.cirquit-table button {
+    border: none;
+    border-radius: 0.3em;
+    width: 2.2em;
+    height: 2.2em;
+    padding: 0;
+    background-color: #ffffff26;
+    background: linear-gradient(#ffffff26 0%, #ffffff26 49%, #00000012 51%, #00000008 75%, #ffffff20);
+    border: 1px solid #0000002e;
+    box-shadow: 0px 1px 2px 0px #0000006b, 0px 0.25em 1px 0px #00000017, inset 0px 1px 2px #ffffffc3, 0px 0px 0.1em #00000087;
+    transition: box-shadow 0.2s, background-color 0.2s;
+}
+
+.cirquit-table button:disabled {
+    box-shadow: inset 0px 1px 2px 0px #0000006b, inset 0px 0.3em 1px 0px #00000017, 0px 1px 0.1em #ffffff73, inset 0px 0px 0.1em #00000087;
+    background-color: #00000026;
+}
+
+.cirquit-table button.active {
+    box-shadow: inset 0px 1px 2px 0px #0000006b, inset 0px 0.3em 1px 0px #00000017, 0px 1px 0.1em #ffffff73, inset 0px 0px 0.1em #00000087;
+}
+*/
+
+.cirquit-header button:first-of-type {
+    margin-left: 0;
+}
+
+.cirquit-header button:last-of-type {
+    margin-right: 0;
+}
+
+.cirquit-actions {
+    display: flex;
+    flex-grow: 2;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0.2em;
+    padding-top: 0.4em;
+    padding-bottom: 0.4em;
+    opacity: 1;
+}
+
+.timer-mode .cirquit-actions {
+    height: 0px;
+    opacity: 0;
+}
+
+.cirquit-actions.hidden {
+    height: 0px;
+    opacity: 0;
+}
+
+.cirquit-actions button {
+    flex-grow: 1;
+    margin-left: 0.2em;
+    margin-right: 0.2em;
+}
+
+.exercise-actions {
+    display: flex;
+    flex-grow: 2;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.exercise-actions button {
+    border: none;
+    background: transparent;
+}
+
+button.secondary.add-cirquit-button {
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+}

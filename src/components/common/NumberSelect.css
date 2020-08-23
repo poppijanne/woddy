@@ -1,0 +1,50 @@
+button.number-button {
+    /*color: #444;*/
+    padding: 0;
+    padding-top: 0.4em;
+    padding-bottom: 0.4em;
+    text-align: center;
+    /*border: none;*/
+    width: 100%;
+    font-size: 1.6em;
+    margin: 0;
+    border-radius: 0;
+    /* background-color: transparent; */
+    /*border: 0.05rem solid var(--border-color);*/
+}
+
+button.number-button.selected {
+    background-color: var(--background-color-selection);
+    color: var(--font-color-selection);
+}
+
+.number-grid {
+    display: grid;
+    grid-template-rows: auto;
+    grid-gap: 5px;
+    font-size: 0.9em;
+}
+
+@media (orientation: portrait) {
+    .number-grid-4-cols {
+        grid-template-columns: 25% 25% 25% 25%;
+        margin: 5px 20px 5px 5px;
+    }
+
+    .number-grid-5-cols {
+        grid-template-columns: 20% 20% 20% 20% 20%;
+        margin: 5px 25px 5px 5px;
+    }
+}
+
+@media (orientation: landscape) {
+    .number-grid-4-cols {
+        grid-template-columns: 25% 25% 25% 25%;
+        margin: 5px 20px 5px 5px;
+    }
+
+    .number-grid-5-cols {
+        grid-template-columns: 20% 20% 20% 20% 20%;
+        margin: 5px 25px 5px 5px;
+    }    
+}

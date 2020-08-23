@@ -1,0 +1,6 @@
+/* TEAM */
+Admin: Janne Kivilahti
+Site: https://www.treeni.net/contact
+
+/* SITE */
+Components: React, React Hook Form, Redux
