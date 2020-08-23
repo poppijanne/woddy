@@ -496,8 +496,8 @@ app.post('/api/v1/user/send-reset-password-link', async (req, res) => {
                 <div>
                     <a href="${url}">Vaihda salasana</a>
                 </div>
-                <div>Huom. Salasanasi ei vaihdu ennen kuin tallennat muutoksen.</div>
-                <div>Huom. Edellä oleva linkki lakkaa toimimasta, kun olet vaihtanut salasanasi.</div>
+                <div>Salasanasi ei vaihdu ennen kuin tallennat muutoksen.</div>
+                <div>Edellä oleva linkki lakkaa toimimasta, kun olet vaihtanut salasanasi.</div>
                 <br/>
                 <div>Ystävällisin terveisin,</div>
                 <div>${process.env.MAIL_SENDER_NAME}</div>

@@ -54,6 +54,7 @@ export default function FrontPageView() {
                 <div>
                     <a href="https://www.linkedin.com/in/janne-kivilahti-92896b69" target="_blank">LinkedIn</a>
                 </div>
+                <div>Copyright &copy; 2020 Janne Kivilahti</div>
             </footer>
         </>
     )
