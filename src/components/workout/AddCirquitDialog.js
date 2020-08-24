@@ -150,6 +150,23 @@ const templates = [
         ]
     }),
     new CirquitTemplate({
+        name: "2 liikettä 20/10 * 3 kierrosta",
+        repeats: 6,
+        rest: 60,
+        exercises: [
+            {
+                tags: [new FilterParam("Lämmittely", "not")],
+                duration: 20,
+                rest: 10
+            },
+            {
+                useTagsFromPrevious: true,
+                duration: 20,
+                rest: 10
+            }
+        ]
+    }),
+    new CirquitTemplate({
         name: "3 liikettä 20/10 * 6 kierrosta",
         repeats: 2,
         rest: 60,
@@ -250,7 +267,7 @@ export default function AddCirquitDialog() {
             </div>
             <br />
             {templates.map(template =>
-                <div className="cirquit-template">
+                <div key={template.name} className="cirquit-template">
                     <button className="primary width-100" onClick={e => onCirquitTemplateSelect(e, template)}>{template.name}</button>
                 </div>
             )}

@@ -13,8 +13,6 @@ function filter(property, params, exerciseTypes) {
         return [...exerciseTypes];
     }
 
-    console.log(`-------------`);
-
     return exerciseTypes.filter(exerciseType => {
 
         if (exerciseType.tempo === 0) {
@@ -24,11 +22,11 @@ function filter(property, params, exerciseTypes) {
         for (let i = 0; i < params.length; i++) {
 
             if (params[i].rule === "one of" && exerciseType[property]?.find(value => value === params[i].value) === undefined) {
-                console.log(`${exerciseType.name} filtered because ${params[i].value} is not found in ${property} [${exerciseType[property].join(",")}]`);
+                //console.log(`${exerciseType.name} filtered because ${params[i].value} is not found in ${property} [${exerciseType[property].join(",")}]`);
                 return false;
             }
             else if (params[i].rule === "not" && exerciseType[property]?.find(value => value === params[i].value) !== undefined) {
-                console.log(`${exerciseType.name} filtered because ${params[i].value} is found in ${property} [${exerciseType[property].join(",")}]`);
+                //console.log(`${exerciseType.name} filtered because ${params[i].value} is found in ${property} [${exerciseType[property].join(",")}]`);
                 return false;
             }
         }
@@ -46,68 +44,74 @@ export class CirquitGenerator {
 
         let unusedExerciseTypes = [...exerciseTypes];
 
-        let previousExerciseTypeName;
-        let previousExercise;
+        //let previousExerciseTypeName;
+        let exerciseType;
+        let previousExerciseType;
+        let previousExerciseDescription;
 
         const cirquit = new Cirquit({
             repeats: template.repeats,
             rest: template.rest,
-            exercises: template.exercises.map((exercise, index, exercises) => {
+            exercises: template.exercises.map((exerciseDescription, index, exerciseDescriptions) => {
 
-                let name = "?";
-
-                if (exercise.name !== undefined) {
-                    name = exercise.name;
+                if (exerciseDescription.name !== undefined) {
+                    //name = exerciseDescription.name;
+                    exerciseType = exerciseTypes.find(exerciseType => exerciseType.name === exerciseDescription.name);
                 }
-                else if (exercise.sameAsPrevious) {
-                    name = previousExerciseTypeName;
+                else if (exerciseDescription.sameAsPrevious) {
+                    exerciseType = previousExerciseType;
                 }
-                else if (exercise.name === undefined) {
+                else if (exerciseDescription.name === undefined) {
 
-                    let tags = exercise.tags;
+                    let tags = exerciseDescription.tags;
 
-                    if (exercise.useTagsFromPrevious) {
-                        tags = previousExercise.tags;
+                    if (exerciseDescription.useTagsFromPrevious) {
+                        console.log("use previous tags");
+
+                        const previousExerciseTypeTags = previousExerciseType.tags.map(tag => new FilterParam(tag))
+
+                        tags = [...previousExerciseDescription.tags, ...previousExerciseTypeTags];
+                        console.log(tags);
                     }
 
-                    const exercisesWithSideSwitch = unusedExerciseTypes.filter(type => type.sideSwitch === exercise.sideSwitch);
-                    const exerciseTypesWithEquipment = filter("equipment", exercise.equipment, exercisesWithSideSwitch);
-                    const exerciseTypesWithMuscles = filter("muscles", exercise.muscles, exerciseTypesWithEquipment);
+                    const exercisesWithSideSwitch = unusedExerciseTypes.filter(type => type.sideSwitch === exerciseDescription.sideSwitch);
+                    const exerciseTypesWithEquipment = filter("equipment", exerciseDescription.equipment, exercisesWithSideSwitch);
+                    const exerciseTypesWithMuscles = filter("muscles", exerciseDescription.muscles, exerciseTypesWithEquipment);
                     const exerciseTypesWithTags = filter("tags", tags, exerciseTypesWithMuscles);
 
                     if (exerciseTypesWithTags.length > 0) {
-                        name = getRandomExerciseType(exerciseTypesWithTags).name;
+                        exerciseType = getRandomExerciseType(exerciseTypesWithTags);
                     }
                     else if (exerciseTypesWithMuscles.length > 0) {
-                        name = getRandomExerciseType(exerciseTypesWithMuscles).name;
+                        exerciseType = getRandomExerciseType(exerciseTypesWithMuscles);
                     }
                     else if (exerciseTypesWithEquipment.length > 0) {
-                        name = getRandomExerciseType(exerciseTypesWithEquipment).name;
+                        exerciseType = getRandomExerciseType(exerciseTypesWithEquipment);
                     }
                     else if (exercisesWithSideSwitch.length > 0) {
-                        name = getRandomExerciseType(exercisesWithSideSwitch).name;
+                        exerciseType = getRandomExerciseType(exercisesWithSideSwitch);
                     }
                     else {
-                        name = getRandomExerciseType(exerciseTypes).name;
+                        exerciseType = getRandomExerciseType(exerciseTypes);
                     }
                 }
 
-                const selectedExerciseIndex = unusedExerciseTypes.findIndex(exerciseType => exerciseType.name === name);
+                const selectedExerciseIndex = unusedExerciseTypes.findIndex(type => type.name === exerciseType.name);
                 if (selectedExerciseIndex !== -1) {
                     unusedExerciseTypes.splice(selectedExerciseIndex, 1);
                 }
 
-                previousExerciseTypeName = name;
+                previousExerciseType = exerciseType;
 
-                if (!exercise.sameAsPrevious) {
-                    previousExercise = exercise;
+                if (!exerciseDescription.sameAsPrevious) {
+                    previousExerciseDescription = exerciseDescription;
                 }
 
                 return {
-                    name,
-                    repeats: exercise.repeats,
-                    duration: exercise.duration,
-                    rest: exercise.rest
+                    name: exerciseType?.name || "?",
+                    repeats: exerciseDescription.repeats,
+                    duration: exerciseDescription.duration,
+                    rest: exerciseDescription.rest
                 }
             })
         });
