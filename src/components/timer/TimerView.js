@@ -235,27 +235,29 @@ export default function TimerView() {
         <>
             <div id="timer-layout" className={`timer-layout layout ${timerState}`}>
 
-                <div id="exercise-titles" className="exercise-titles timer-layout-grid-cell">
-                    {exercises.map((exercise, index) =>
-                        exercise &&
-                        <section
-                            key={exercise.id}
-                            className={`exercise-title ${index === 0 ? 'previous' : index === 2 ? 'next' : 'current'} ${status.remainingExerciseTime <= 10 && 'upcoming'}`}>
-                            <h1 style={{ 'fontSize': calculateFontSize(exercise.name) + "em" }}>{exercise.name}</h1>
-                            {(exercise.id === status.nextExercise?.id) &&
-                                <div className="next-exercise-alert-icon">
-                                    <h3><FontAwesomeIcon icon={faArrowRight} /></h3>
-                                </div>
-                            }
-                        </section>)
-                    }
+                {(!status.cirquitRest && status.countDownDone) &&
+                    <div id="exercise-titles" className="exercise-titles timer-layout-grid-cell">
+                        {exercises.map((exercise, index) =>
+                            exercise &&
+                            <section
+                                key={exercise.id}
+                                className={`exercise-title ${index === 0 ? 'previous' : index === 2 ? 'next' : 'current'} ${status.remainingExerciseTime <= 10 && 'upcoming'}`}>
+                                <h1 style={{ 'fontSize': calculateFontSize(exercise.name) + "em" }}>{exercise.name}</h1>
+                                {(exercise.id === status.nextExercise?.id) &&
+                                    <div className="next-exercise-alert-icon">
+                                        <h3><FontAwesomeIcon icon={faArrowRight} /></h3>
+                                    </div>
+                                }
+                            </section>)
+                        }
 
-                    {status.done &&
-                        <section className="exercise-title">
-                            <h1>Ohjelma on suoritettu loppuun!</h1>
-                        </section>
-                    }
-                </div>
+                        {status.done &&
+                            <section className="exercise-title">
+                                <h1>Ohjelma on suoritettu loppuun!</h1>
+                            </section>
+                        }
+                    </div>
+                }
 
                 <section id="timer-clock" className="timer timer-layout-grid-cell">
                     <div>
@@ -272,7 +274,7 @@ export default function TimerView() {
                     </div>
                 </section>
 
-                {status.currentCirquit &&
+                {status.currentCirquit && (status.cirquitRest || !status.countDownDone) &&
                     <section id="timer-cirquit-info" className="timer-cirquit-info timer-layout-grid-cell">
 
                         {edit ?
@@ -298,54 +300,56 @@ export default function TimerView() {
                     </section>
                 }
 
-                {status.currentCirquit && (status.resting || !status.countDownDone) &&
+                {status.currentCirquit && (status.cirquitRest || !status.countDownDone) &&
                     <section className="rest-cirquit-info timer-layout-grid-cell">
                         <h4>Sarja</h4>
                         <h3>{status.currentCirquitIndex + 1}/{workout.cirquits.length}</h3>
                     </section>
                 }
 
-                {status.currentCirquit && (status.resting || !status.countDownDone) &&
+                {status.currentCirquit && (status.cirquitRest || !status.countDownDone) &&
                     <section className="rest-round-info timer-layout-grid-cell">
                         <h4>Kierroksia</h4>
                         <h3>{status.currentCirquit.repeats}</h3>
                     </section>
                 }
 
-                <div className="workout-info">
+                {(!status.cirquitRest && status.countDownDone) &&
+                    <div className="workout-info">
 
-                    {totalTimeLeft > 0 &&
-                        <section className="remaining-workout-time timer-layout-grid-cell">
-                            <h4>Jäljellä</h4>
-                            <h3>
-                                <Time milliseconds={totalTimeLeft} />
-                            </h3>
-                        </section>
-                    }
-
-                    {status.currentCirquit &&
-                        <>
-                            <section id="cirquit-info" className="cirquit-info timer-layout-grid-cell">
-                                <h4>Sarja</h4>
-                                <h3>{status.currentCirquitIndex + 1} / {workout.cirquits.length}</h3>
+                        {totalTimeLeft > 0 &&
+                            <section className="remaining-workout-time timer-layout-grid-cell">
+                                <h4>Jäljellä</h4>
+                                <h3>
+                                    <Time milliseconds={totalTimeLeft} />
+                                </h3>
                             </section>
+                        }
 
-                            <section className="round-info timer-layout-grid-cell">
-                                <h4>Kierros</h4>
-                                <h3>{status.currentRound} / {status.currentCirquit.repeats}</h3>
-                            </section>
+                        {status.currentCirquit &&
+                            <>
+                                <section id="cirquit-info" className="cirquit-info timer-layout-grid-cell">
+                                    <h4>Sarja</h4>
+                                    <h3>{status.currentCirquitIndex + 1} / {workout.cirquits.length}</h3>
+                                </section>
 
-                            <section className="exercise-info timer-layout-grid-cell">
-                                <h4>Liike</h4>
-                                <h3>{status.currentExerciseIndex + 1} / {status.currentCirquit.exercises.length}</h3>
-                            </section>
-                        </>
-                    }
-                </div>
+                                <section className="round-info timer-layout-grid-cell">
+                                    <h4>Kierros</h4>
+                                    <h3>{status.currentRound} / {status.currentCirquit.repeats}</h3>
+                                </section>
+
+                                <section className="exercise-info timer-layout-grid-cell">
+                                    <h4>Liike</h4>
+                                    <h3>{status.currentExerciseIndex + 1} / {status.currentCirquit.exercises.length}</h3>
+                                </section>
+                            </>
+                        }
+                    </div>
+                }
 
             </div >
             {
-                !edit && status.currentCirquit && (status.resting || !status.countDownDone) &&
+                !edit && status.currentCirquit && (status.cirquitRest || !status.countDownDone) &&
                 <button className="timer-view-edit-cirquit-button" onClick={e => setEdit(!edit)}>
                     <FontAwesomeIcon icon={faEdit} />
                 </button>
