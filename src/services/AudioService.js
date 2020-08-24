@@ -5,12 +5,12 @@ export default class AudioService {
     constructor() {
         console.log("new AudioService()")
         Howler.autoUnlock = true;
-        Howler.autoSuspend = false;
+        //Howler.autoSuspend = false;
         this.sounds = new Howl({
             src: ['audio\\fx.mp3'],
             preload: true,
-            html5: true,
-            pool: 8,
+            //html5: true,
+            //pool: 8,
             sprite: {
                 start: [0, 1000],
                 stop: [2000, 1000],
@@ -38,9 +38,7 @@ export default class AudioService {
         });	
 
         this.setVolume(50);
-
-
-        console.dir(window.speechSynthesis.getVoices());
+        //console.dir(window.speechSynthesis.getVoices());
     }
 
     async start() {
