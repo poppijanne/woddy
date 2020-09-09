@@ -151,7 +151,7 @@ const templates = [
     }),
     new CirquitTemplate({
         name: "2 liikettä 20/10 * 3 kierrosta",
-        repeats: 6,
+        repeats: 3,
         rest: 60,
         exercises: [
             {

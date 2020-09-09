@@ -9,3 +9,4 @@ Workout of the day generator and an interval timer. See live example at [Treenir
 - Personal templates
 - Save and load templates
 - Complete workout generator
+- Loader in send password reset
