@@ -390,13 +390,13 @@ export default function WorkoutTemplatesView() {
                 )}
                 <hr/>
                 <div className="mb-3">
-                    <button id="workout-templates-warmup" className={`pretty checkbox`} onClick={e => setWarmup(!warmup)}>
+                    <button type="button" id="workout-templates-warmup" className={`pretty checkbox`} onClick={e => setWarmup(!warmup)}>
                         {warmup && <FontAwesomeIcon icon={faCheck} fixedWidth />}
                     </button>
                     <label className="ml-3" for="workout-templates-warmup">Lämmittely</label>
                 </div>
                 <div className="mb-3">
-                    <button id="workout-templates-planks" className={`pretty checkbox`} onClick={e => setPlanks(!planks)}>
+                    <button type="button" id="workout-templates-planks" className={`pretty checkbox`} onClick={e => setPlanks(!planks)}>
                         {planks && <FontAwesomeIcon icon={faCheck} fixedWidth />}
                     </button>
                     <label className="ml-3" for="workout-templates-planks">Lankkuhaaste</label>
