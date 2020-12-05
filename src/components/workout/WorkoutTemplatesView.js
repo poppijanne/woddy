@@ -34,19 +34,19 @@ const planksTemplate = new CirquitTemplate({
     rest: 60,
     exercises: [
         {
-            tags: [new FilterParam("Lämmittely")],
+            name: "Kylkilankku",
             duration: 60,
             rest: 5
         },
         {
-            tags: [new FilterParam("Lämmittely")],
+            name: "Kylkilankku",
             duration: 60,
             rest: 5
         },
         {
-            tags: [new FilterParam("Lämmittely")],
+            name: "Lankku",
             duration: 60,
-            rest: 5
+            rest: 0
         }
     ]
 });
