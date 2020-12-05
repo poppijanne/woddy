@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react"
 import "./FrontPageView.css";
-import Workout from "../../data/Workout";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
@@ -8,13 +7,11 @@ export default function FrontPageView() {
 
     const user = useSelector(state => state.user);
     const [step, setStep] = useState("start");
-    const dispatch = useDispatch();
+    //const dispatch = useDispatch();
     const history = useHistory();
 
     const createNewWorkout = e => {
-        const workout = new Workout({ author: user?.name });
-        dispatch({ type: "SET WORKOUT", payload: workout });
-        history.push(`/workout`);
+        history.push(`/new/workout/`);
     }
 
     const openMyWorkouts = e => {

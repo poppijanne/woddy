@@ -15,6 +15,7 @@ import User from './data/User';
 import UserView from './components/user/UserView';
 import UserService from './services/UserService';
 import AddCirquitDialog from './components/workout/AddCirquitDialog';
+import WorkoutTemplatesView from './components/workout/WorkoutTemplatesView';
 import ChangePasswordView from './components/user/ChangePasswordView';
 
 function App() {
@@ -142,6 +143,7 @@ function App() {
                     <Route path="/user/:userId/password" exact component={ChangePasswordView} />
                     <Route path="/user/me" exact component={UserView} />
                     <Route path="/workout" exact component={WorkoutView} />
+                    <Route path="/new/workout" exact component={WorkoutTemplatesView} />
                     <Route path="/workout/:workoutId" exact component={WorkoutView} />
                     <Route exact path="/timer" component={TimerView} />
                     <Route exact path="/timer/workout/:workoutId" component={TimerView} />

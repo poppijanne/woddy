@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from "react-redux";
 import CirquitTemplate from "../../data/CirquitTemplate";
 import { CirquitGenerator, FilterParam } from "./Generators";
 import Modal from "../common/Modal";
-import "./AddCirquitDialog.css";
 
 const templates = [
     new CirquitTemplate({
@@ -262,12 +261,12 @@ export default function AddCirquitDialog() {
 
     return (
         <Modal title={"Uuden liikesarja lisääminen"} onClose={onClose}>
-            <div className="cirquit-template">
+            <div className="m-2">
                 <button className="primary width-100" onClick={e => onCreateEmptyCirquit(e)}>Tyhjä liikesarja</button>
             </div>
             <br />
             {templates.map(template =>
-                <div key={template.name} className="cirquit-template">
+                <div key={template.name} className="m-2">
                     <button className="primary width-100" onClick={e => onCirquitTemplateSelect(e, template)}>{template.name}</button>
                 </div>
             )}
