@@ -41,7 +41,8 @@ const FileStore = require('session-file-store')(session);
 app.use(
     session({
         store: new FileStore({
-            ttl: parseInt(process.env.SESSION_TIMEOUT_SECONDS)
+            ttl: parseInt(process.env.SESSION_TIMEOUT_SECONDS),
+            reapInterval: 900
         }),
         secret: process.env.SECRET,
         resave: false,
@@ -793,6 +794,7 @@ app.get('/api/v1/exercises', (req, res) => {
             { name: "Tuulimylly", equipment: ["Kahvakuula"], muscles: ["Kyljet"], tags: ["Core"] },
             // Vatsat / selkä
             { name: "Russian Twist", equipment: ["Kahvakuula", "Matto"], muscles: ["Vatsat", "Kyljet"], tags: ["Vatsat"] },
+            { name: "Rutistus kuulan kanssa", equipment: ["Kahvakuula", "Matto"], muscles: ["Vatsat"], tags: ["Vatsat"] },
             { name: "Kantapäiden kosketus", muscles: ["Vatsat", "Kyljet"], tags: ["Kehonpaino", "Vatsat"] },
             { name: "Pull Over", equipment: ["Kahvakuula", "Matto"], muscles: ["Vatsat"], tags: ["Vatsat"] },
             { name: "Knee Grab", equipment: ["Matto"], muscles: ["Vatsat"], tags: ["Kehonpaino", "Vatsat"] },

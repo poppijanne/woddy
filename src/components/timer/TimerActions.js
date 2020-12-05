@@ -73,7 +73,7 @@ export default function TimerActions() {
         if (status.remainingCountDownTime === 0 && status.remainingExerciseTime > 0 && status.remainingExerciseTime <= 5) {
             counter = status.remainingExerciseTime;
         }
-        if (status.remainingExerciseTime === Math.floor(status.currentExercise?.duration / 2) && status.currentExercise?.duration > 20 && status.remainingRestTime > 0) {
+        if (status.remainingExerciseTime === Math.floor(status.currentExercise?.duration / 2) && status.currentExercise?.duration > 20) {
             halftime = true;
         }
     }
